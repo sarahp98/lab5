@@ -4,17 +4,8 @@
   <meta charset="utf-8" />
   <title>Leaflet Routing!</title>
 
-  <style>
-    body {
-        padding: 0;
-        margin: 0;
-    }
-    html, body, #map {
-        height: 100%;
-        width: 100vw;
-    }
-    </style>
-
+    <!--Style-->
+    <link rel="stylesheet" href="css.css" />
     <!--Leaflet-->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
       <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
@@ -26,9 +17,9 @@
       <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <!--Easy Button-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
-    <!--Trying to get the button that centers on user location-->
-    <script src="javascript.js"></script>
+  
 </head>
 
 <body>
@@ -79,6 +70,40 @@
                  map.closePopup();
              });
      });
-</Script>
+</script>
+
+<script>
+
+window.onload = function(){
+alert('Your location will be detected to aid your naviagtion.');
+};
+//locate button runs the location method and then adds to map
+L.easyButton('fas fa-map-marker-alt', function(){
+  map.locate({setView: true});
+}).addTo(map);
+
+function onLocationFound(e) {
+
+
+  L.marker(e.latlng).addTo(map)
+    .bindPopup("You are here.").openPopup();
+
+}
+
+function onLocationError(e) {
+  alert(e.message);
+}
+
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
+
+//This specifies that the locate method should run
+map.locate({
+  setView: true, //this option centers the map on location and zooms
+  maxZoom: 12, // this option prevents the map from zooming further than 16, maintaining some spatial context even if the accuracy of the location reading allows for closer zoom
+  timeout: 15000, // this option specifies when the browser will stop attempting to get a fix on the device's location. Units are miliseconds. Change this to 15000 and test the change. Before you submit, change this to 15000.
+  watch: false, // you can set this option from false to true to track a user's movement over time instead of just once. For our purposes, however, leave this option as is.
+});
+</script>
 </body>
 </html>
