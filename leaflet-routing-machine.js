@@ -1,3 +1,7 @@
+window.onload = function(){
+alert('Click anywhere on the map to choose your starting location and/or end location.');
+}; // On load, this alert notifies the user that the page will ask to access their location and gives a reason why. You can easily modify this text. from lab 4
+
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(_dereq_,module,exports){
 function corslite(url, callback, cors) {
     var sent = false;
@@ -17068,12 +17072,12 @@ module.exports = L.Routing = {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],57:[function(_dereq_,module,exports){
-/* 
+/*
    NOTICE
    Since version 3.2.5, the functionality in this file is by
    default NOT used for localizing OSRM instructions.
    Instead, we rely on the module osrm-text-instructions (https://github.com/Project-OSRM/osrm-text-instructions/).
-   
+
    This file can still be used for other routing backends, or if you specify the
    stepToText option in the OSRMv1 class.
 */
@@ -17367,7 +17371,7 @@ module.exports = L.Routing = {
 
 		'es': spanish,
 		'sp': spanish,
-		
+
 		'nl': {
 			directions: {
 				N: 'noordelijke',
@@ -17794,7 +17798,7 @@ module.exports = L.Routing = {
 				seconds: 'с'
 			}
 		},
-                
+
                 'pl': {
 			directions: {
 				N: 'północ',
